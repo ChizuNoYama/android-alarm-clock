@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Alarm Clock</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Welcome to the best alarm clock ever</string>
+    <string name="welcome_to_the_best_alarm_clock_ever_">Welcome to the best alarm clock ever!</string>
+
+</resources>
