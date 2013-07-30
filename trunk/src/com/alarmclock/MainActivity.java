@@ -45,7 +45,13 @@ public class MainActivity extends Activity
 		//update or while loop or whatever is here
 		alarmCheck(timePickerHour, timePickerMinute, now, testMessage);
 
+<<<<<<< .mine
+				Chronometer mainTimeDisplay = (Chronometer) findViewById(R.id.chronometer1);
+				
+			}
+=======
 	}
+>>>>>>> .r8
 
 	// protected void onStop()
 	// {
