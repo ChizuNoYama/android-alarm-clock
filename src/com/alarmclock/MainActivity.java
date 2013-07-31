@@ -1,8 +1,13 @@
 package com.alarmclock;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.support.v4.view.MotionEventCompat;
 import android.text.format.Time;
 import android.view.Menu;
@@ -12,7 +17,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-@SuppressWarnings({ "unused" })
+@SuppressLint("NewApi")
+@SuppressWarnings({ "unused", "deprecation" })
 public class MainActivity extends Activity
 {
 	Time now;
@@ -21,41 +27,43 @@ public class MainActivity extends Activity
 	int timePickerHour;
 	int timePickerMinute;
 	MediaPlayer mp;
+	Bundle bundle;
+	Dialog dialog;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
+		
 		super.onCreate(savedInstanceState);
+		
 
-		// PowerManager powman = (PowerManager)
-		// getSystemService(Context.POWER_SERVICE);
-		// PowerManager.WakeLock wl =
-		// powman.newWakeLock(PowerManager.FULL_WAKE_LOCK, "My Tag");
-		// wl.acquire();
+//		PowerManager powman = (PowerManager)
+//		getSystemService(Context.POWER_SERVICE);
+//		PowerManager.WakeLock wl =
+//		powman.newWakeLock(PowerManager.FULL_WAKE_LOCK, "My Tag");
+//		wl.acquire();
 
 		setContentView(R.layout.activity_main);
 		
 		// Getting the system time;
 		now = new Time();
 		now.setToNow();
-
+		
 		// creating the time on the application layout
 		timePicker = (TimePicker) findViewById(R.id.timePicker);
-
-		// A message for testing
-		testMessage = (TextView) findViewById(R.id.testText);
-
+		
 		// Setting up the sound
 		mp = MediaPlayer.create(this, R.raw.sound1);
 
-		setAlarm(timePicker);
-		//alarmCheck(timePickerHour, timePickerMinute, now, testMessage, mp);
+		setAlarm();
+		
 	}
 
-	protected void onStop()
-	{
-		super.onStop();
-	}
+//	protected void onStop()
+//	{
+//		super.onStop();
+//	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
@@ -66,7 +74,7 @@ public class MainActivity extends Activity
 	}
 
 	// What the button does. sets the alarm
-	private void setAlarm(final TimePicker timePicker)
+	private void setAlarm()
 	{
 
 		Button alarmButton = (Button) findViewById(R.id.setButton);
@@ -78,15 +86,17 @@ public class MainActivity extends Activity
 			{
 				int timePickerHour = timePicker.getCurrentHour();
 				int timePickerMinute = timePicker.getCurrentMinute();
-				testMessage.setText("Alarm!!");
+				
+				// Testing for the sound and the dialog
 				mp.start();
-
+				
+				// creating the snooze and dismiss dialog box with bundle?
 				
 			}
 		});
 	}
 
-	// Checks is the alarm and the time match.
+	// Checks is the alarm and the time match. So later when we find out the update method
 	private void alarmCheck(int timePickHour, int timePickMinute, Time time, TextView test, MediaPlayer mp)
 	{
 		int currentHour = time.hour;
@@ -104,5 +114,7 @@ public class MainActivity extends Activity
 
 		}
 	}
+	
+	
 
 }
