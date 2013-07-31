@@ -6,6 +6,9 @@
     <string name="hello_world">Welcome to the best alarm clock ever</string>
     <string name="welcome_to_the_best_alarm_clock_ever_">Welcome to the best alarm clock ever!</string>
     <string name="setButton">Set The Alarm!</string>
-    <string name="testing_Text"></string>
+    <string name="dialog_message">Dismiss or Snooze. Choose Wisely Sir</string>
+    <string name="dialog_title">Wake Up Bro!!</string>
+    <string name="dialog_snooze_button">Snooze</string>
+    <string name="dialog_dismiss_button">Be Gone!!</string>
 
 </resources>
